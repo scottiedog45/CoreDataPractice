@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class TodoListViewController : UITableViewController {
 	
 	var itemArray = [Item]()
+	
+	let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
 	@IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
 		let alert = UIAlertController(title: "Add Item", message: "Add Item Here", preferredStyle: .alert)
@@ -20,11 +23,17 @@ class TodoListViewController : UITableViewController {
 		}
 		
 		let action = UIAlertAction(title: "Add", style: .default) { (_) in
+			
 			guard let newItem = alert.textFields?.first?.text else {return}
-			self.itemArray.append(Item(title: newItem, done: false))
-			DispatchQueue.main.async {
-				self.tableView.reloadData()
-			}
+			
+			let otherItem = Item(context: self.context)
+			
+			otherItem.title = newItem
+			otherItem.done = false
+			
+			self.itemArray.append(otherItem)
+			
+			self.saveItems()
 			
 		}
 		
@@ -34,15 +43,7 @@ class TodoListViewController : UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		let itemOne = Item(title: "Find Mike", done: false)
-		let itemTwo = Item(title: "Buy Eggos", done: false)
-		let itemThree = Item(title: "Destroy Demogorgon", done: false)
-		
-		itemArray.append(itemOne)
-		itemArray.append(itemTwo)
-		itemArray.append(itemThree)
-		
+		loadItems()
 		// Do any additional setup after loading the view.
 	}
 	
@@ -67,12 +68,39 @@ class TodoListViewController : UITableViewController {
 		
 		itemArray[indexPath.row].done = !itemArray[indexPath.row].done
 		
-		tableView.reloadData()
+		//context has to come first
+		
+//		context.delete(itemArray[indexPath.row])
+//		
+//		itemArray.remove(at: indexPath.row)
+		
+		saveItems()
 		
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 
 	
 
+	func saveItems() {
+		do {
+			try context.save()
+		} catch {
+			print("Error saving context \(error)")
+		}
+		self.tableView.reloadData()
+	}
+	
+	func loadItems() {
+		let request : NSFetchRequest<Item> = Item.fetchRequest()
+		
+		do {
+			itemArray = try context.fetch(request)
+			
+		} catch {
+			print("Error \(error)")
+		}
+	}
+	
+	
 }
 
