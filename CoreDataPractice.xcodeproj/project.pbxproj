@@ -15,6 +15,7 @@
 		053DA24E225653DC0099A950 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 053DA24C225653DC0099A950 /* LaunchScreen.storyboard */; };
 		053DA259225653DC0099A950 /* CoreDataPracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053DA258225653DC0099A950 /* CoreDataPracticeTests.swift */; };
 		053DA264225653DC0099A950 /* CoreDataPracticeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053DA263225653DC0099A950 /* CoreDataPracticeUITests.swift */; };
+		053DA27822569ACA0099A950 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053DA27722569ACA0099A950 /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		053DA25F225653DC0099A950 /* CoreDataPracticeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreDataPracticeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		053DA263225653DC0099A950 /* CoreDataPracticeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPracticeUITests.swift; sourceTree = "<group>"; };
 		053DA265225653DC0099A950 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		053DA27722569ACA0099A950 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 		053DA274225661AA0099A950 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				053DA27722569ACA0099A950 /* CategoryViewController.swift */,
 				053DA242225653DB0099A950 /* TodoListViewController.swift */,
 			);
 			path = Controllers;
@@ -291,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				053DA27822569ACA0099A950 /* CategoryViewController.swift in Sources */,
 				053DA243225653DB0099A950 /* TodoListViewController.swift in Sources */,
 				053DA249225653DB0099A950 /* CoreDataPractice.xcdatamodeld in Sources */,
 				053DA241225653DB0099A950 /* AppDelegate.swift in Sources */,
